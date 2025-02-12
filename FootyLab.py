@@ -30,8 +30,8 @@ if "user" not in st.session_state:
 #if "password" not in st.session_state:
 #     st.session_state.password = None
 
-ROLES = [None,"Coach Gus", "Tates 1", "Tates 2", "Tates 3", "Tates 4", "Tates 5", "Tates 6", "Tates 7", "Tates 8", "Tates 9", "Tates 10", "Tates 11", "Tates 12", "Tates 13", "Tates 14", "Tates 15"]
-allroles = ["Coach Gus", "Tates 1", "Tates 2", "Tates 3", "Tates 4", "Tates 5", "Tates 6", "Tates 7", "Tates 8", "Tates 9", "Tates 10", "Tates 11", "Tates 12", "Tates 13", "Tates 14", "Tates 15"]
+ROLES = [None,"Coach Gus", "Cooper Hogue", "Justus Woods", "Lana Salie-Crouter", "Emily Cooper", "Cooper Thoms", "Maverick Abbott","Charlie Huber","Cruz Kowaleski","Chace Clark","Lincoln Hogue","Alex Hill","Reeve Brumit","Iris Hicks","Tates 14", "Tates 15"]
+allroles = ["Coach Gus", "Cooper Hogue", "Justus Woods", "Lana Salie-Crouter", "Emily Cooper", "Cooper Thoms", "Maverick Abbott","Charlie Huber","Cruz Kowaleski","Chace Clark","Lincoln Hogue","Alex Hill","Reeve Brumit","Iris Hicks"]
 playersdeployed = ["Coach Gus"]
 def login():
 
