@@ -86,10 +86,17 @@ emily = st.Page(
     icon=":material/school:",
     default=(user == "Emily Cooper")
 )
+
+lana = st.Page(
+    "./roster/lana.py",
+    title="Lana's App",
+    icon=":material/school:",
+    default=(user == "Lana Salie-Crouter")
+)
 account_pages = [logout_page, settings]
 explore_pages = [BootRoom, prosoccer]
 build_pages = [codeBox]
-deployed_pages = [coachGus, classpage, emily]
+deployed_pages = [coachGus, classpage, emily, lana]
 
 page_dict = {}
 
