@@ -32,7 +32,7 @@ if "user" not in st.session_state:
 
 ROLES = [None,"Coach Gus", "Cooper Hogue", "Justus Woods", "Lana Salie-Crouter", "Emily Cooper", "Cooper Thoms", "Maverick Abbott","Charlie Huber","Cruz Kowaleski","Chace Clark","Lincoln Hogue","Alex Hill","Reeve Brumit","Iris Hicks","Arjun Ganta", "Jack Payne"]
 allroles = ["Coach Gus", "Cooper Hogue", "Justus Woods", "Lana Salie-Crouter", "Emily Cooper", "Cooper Thoms", "Maverick Abbott","Charlie Huber","Cruz Kowaleski","Chace Clark","Lincoln Hogue","Alex Hill","Reeve Brumit","Iris Hicks","Arjun Ganta", "Jack Payne"]
-playersdeployed = ["Coach Gus","Emily Cooper","Lana Salie-Crouter"]
+playersdeployed = ["Coach Gus","Emily Cooper","Lana Salie-Crouter","Cooper Hogue","Justus Woods","Iris Hicks","Arjun Ganta","Jack Payne","Cruz Kowaleski","Chace Clark","Lincoln Hogue","Charlie Huber","Maverick Abbott"]
 def login():
 
     st.header("Log in")
@@ -93,10 +93,73 @@ lana = st.Page(
     icon=":material/school:",
     default=(user == "Lana Salie-Crouter")
 )
+cooperH = st.Page(
+    "./roster/cooperH.py",
+    title="Cooper Hogue",
+    icon=":material/school:",
+    default=(user == "Cooper Hogue")
+)
+justus = st.Page(
+    "./roster/justus.py",
+    title="Justus Woods",
+    icon=":material/school:",
+    default=(user == "Justus Woods")
+)
+iris = st.Page(
+    "./roster/iris.py",
+    title="Iris Hicks",
+    icon=":material/school:",
+    default=(user == "Iris Hicks")
+)
+arjun = st.Page(    
+    "./roster/arjun.py",
+    title="Arjun Ganta",
+    icon=":material/school:",
+    default=(user == "Arjun Ganta")
+)
+jack = st.Page(
+    "./roster/jack.py",
+    title="Jack Payne",
+    icon=":material/school:",
+    default=(user == "Jack Payne")
+)
+cruz = st.Page(
+    "./roster/cruz.py",
+    title="Cruz Kowaleski",
+    icon=":material/school:",
+    default=(user == "Cruz Kowaleski")
+)
+chace = st.Page(
+    "./roster/chace.py",
+    title="Chace Clark",
+    icon=":material/school:",
+    default=(user == "Chace Clark")
+)
+lincoln = st.Page(
+    "./roster/lincoln.py",
+    title="Lincoln Hogue",
+    icon=":material/school:",
+    default=(user == "Lincoln Hogue")
+)
+charlie = st.Page(
+    "./roster/charlie.py",
+    title="Charlie Huber",
+    icon=":material/school:",
+    default=(user == "Charlie Huber")
+)
+maverick = st.Page(
+    "./roster/maverick.py",
+    title="Maverick Abbott",
+    icon=":material/school:",
+    default=(user == "Maverick Abbott")
+)
+
+
+
 account_pages = [logout_page, settings]
 explore_pages = [BootRoom, prosoccer]
 build_pages = [codeBox]
-deployed_pages = [coachGus, classpage, emily, lana]
+deployed_pages = [coachGus, classpage, emily, lana, cooperH, justus, iris, arjun, jack, cruz, chace, lincoln, charlie, maverick]
 
 page_dict = {}
 
