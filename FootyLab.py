@@ -32,7 +32,7 @@ if "user" not in st.session_state:
 
 ROLES = [None,"Coach Gus", "Cooper Hogue", "Justus Woods", "Lana Salie-Crouter", "Emily Cooper", "Cooper Thoms", "Maverick Abbott","Charlie Huber","Cruz Kowaleski","Chace Clark","Lincoln Hogue","Alex Hill","Reeve Brumit","Iris Hicks","Arjun Ganta", "Jack Payne"]
 allroles = ["Coach Gus", "Cooper Hogue", "Justus Woods", "Lana Salie-Crouter", "Emily Cooper", "Cooper Thoms", "Maverick Abbott","Charlie Huber","Cruz Kowaleski","Chace Clark","Lincoln Hogue","Alex Hill","Reeve Brumit","Iris Hicks","Arjun Ganta", "Jack Payne"]
-playersdeployed = ["Coach Gus","Emily Cooper","Lana Salie-Crouter","Cooper Hogue","Justus Woods","Iris Hicks","Arjun Ganta","Jack Payne","Cruz Kowaleski","Chace Clark","Lincoln Hogue","Charlie Huber","Maverick Abbott"]
+playersdeployed = ["Coach Gus","Emily Cooper","Lana Salie-Crouter","Cooper Hogue","Justus Woods","Iris Hicks","Arjun Ganta","Jack Payne","Cruz Kowaleski","Lincoln Hogue","Charlie Huber"]
 def login():
 
     st.header("Log in")
@@ -129,12 +129,12 @@ cruz = st.Page(
     icon=":material/school:",
     default=(user == "Cruz Kowaleski")
 )
-chace = st.Page(
-    "./roster/chace.py",
-    title="Chace Clark",
-    icon=":material/school:",
-    default=(user == "Chace Clark")
-)
+#chace = st.Page(
+#    "./roster/chace.py",
+#    title="Chace Clark",
+#    icon=":material/school:",
+#    default=(user == "Chace Clark")
+#)
 lincoln = st.Page(
     "./roster/lincoln.py",
     title="Lincoln Hogue",
@@ -147,19 +147,19 @@ charlie = st.Page(
     icon=":material/school:",
     default=(user == "Charlie Huber")
 )
-maverick = st.Page(
-    "./roster/maverick.py",
-    title="Maverick Abbott",
-    icon=":material/school:",
-    default=(user == "Maverick Abbott")
-)
+#maverick = st.Page(
+#    "./roster/maverick.py",
+#    title="Maverick Abbott",
+#    icon=":material/school:",
+#    default=(user == "Maverick Abbott")
+#)
 
 
 
 account_pages = [logout_page, settings]
 explore_pages = [BootRoom, prosoccer]
 build_pages = [codeBox]
-deployed_pages = [coachGus, classpage, emily, lana, cooperH, justus, iris, arjun, jack, cruz, chace, lincoln, charlie, maverick]
+deployed_pages = [coachGus, classpage, emily, lana, cooperH, justus, iris, arjun, jack, cruz, lincoln, charlie]
 
 page_dict = {}
 
