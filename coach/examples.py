@@ -20,6 +20,21 @@ with coach_message:
 
 st.dataframe(data)
 
+# Show code for Example 1
+with st.expander("📝 See the code for loading and displaying data"):
+    st.code('''
+# Import libraries
+import streamlit as st
+import pandas as pd
+import altair as alt
+
+# Load the data from a CSV file
+data = pd.read_csv("data/Tates_data.csv")
+
+# Display the data as an interactive table
+st.dataframe(data)
+''')
+
 # Example 2: Player Selector
 st.header("2️⃣ Pick Your Player!")
 coach_message = st.chat_message(name="Coach Gus", avatar="./media/profile_coachGus.JPG")
@@ -33,6 +48,22 @@ if st.button("Show Player Stats"):
     st.write(f"Stats for {player_name}:")
     st.metric("Average Distance (km)", f"{player_data['Distance (km)'].mean():.2f}")
     st.metric("Top Speed (m/s)", f"{player_data['Top Speed (m/s)'].max():.2f}")
+
+# Show code for Example 2
+with st.expander("📝 See the code for player selection and stats"):
+    st.code('''
+# Create a dropdown to select a player
+player_name = st.selectbox("Choose a player:", data["Player Name"].unique())
+
+# Filter the data for just that player
+player_data = data[data["Player Name"] == player_name]
+
+# Add a button to show stats
+if st.button("Show Player Stats"):
+    st.write(f"Stats for {player_name}:")
+    st.metric("Average Distance (km)", f"{player_data['Distance (km)'].mean():.2f}")
+    st.metric("Top Speed (m/s)", f"{player_data['Top Speed (m/s)'].max():.2f}")
+''')
 
 # Example 3: Interactive Chart
 st.header("3️⃣ Make Your Own Chart!")
@@ -56,6 +87,30 @@ chart = alt.Chart(data).mark_circle().encode(
 
 st.altair_chart(chart, use_container_width=True)
 
+# Show code for Example 3
+with st.expander("📝 See the code for the interactive chart"):
+    st.code('''
+# Create two columns for our controls
+col1, col2 = st.columns(2)
+
+# Add dropdown selectors in each column
+with col1:
+    x_axis = st.selectbox("Pick X-axis:", ["Distance (km)", "Top Speed (m/s)", "Sprint Distance (m)"])
+with col2:
+    y_axis = st.selectbox("Pick Y-axis:", ["Sprint Distance (m)", "Distance (km)", "Top Speed (m/s)"])
+
+# Create an interactive chart using Altair
+chart = alt.Chart(data).mark_circle().encode(
+    x=x_axis,
+    y=y_axis,
+    color="Player Name",
+    tooltip=["Player Name", x_axis, y_axis]
+).interactive()
+
+# Display the chart
+st.altair_chart(chart, use_container_width=True)
+''')
+
 # Example 4: Fun Stats Challenge
 st.header("4️⃣ Stats Challenge!")
 coach_message = st.chat_message(name="Coach Gus", avatar="./media/profile_coachGus.JPG")
@@ -68,6 +123,22 @@ if st.button("Show Team Records"):
     
     st.success(f"🏃‍♂️ Fastest Player: {fastest_player['Player Name']} with {fastest_player['Top Speed (m/s)']:.2f} m/s")
     st.success(f"🏃‍♂️ Longest Distance: {longest_distance['Player Name']} with {longest_distance['Distance (km)']:.2f} km")
+
+# Show code for Example 4
+with st.expander("📝 See the code for finding team records"):
+    st.code('''
+# Create a button to show team records
+if st.button("Show Team Records"):
+    # Find the player with the highest top speed
+    fastest_player = data.loc[data["Top Speed (m/s)"].idxmax()]
+    
+    # Find the player who covered the longest distance
+    longest_distance = data.loc[data["Distance (km)"].idxmax()]
+    
+    # Display the results with success messages
+    st.success(f"🏃‍♂️ Fastest Player: {fastest_player['Player Name']} with {fastest_player['Top Speed (m/s)']:.2f} m/s")
+    st.success(f"🏃‍♂️ Longest Distance: {longest_distance['Player Name']} with {longest_distance['Distance (km)']:.2f} km")
+''')
 
 # NEW EXAMPLE: Tates Sessions Filter
 st.header("5️⃣ Tates Sessions Only!")
@@ -110,6 +181,45 @@ if show_tates:
     ).interactive()
     st.altair_chart(tates_chart, use_container_width=True)
 
+# Show code for Example 5
+with st.expander("📝 See the code for filtering Tates sessions"):
+    st.code('''
+# Create a toggle button
+show_tates = st.toggle("Show Tates Sessions Only")
+
+if show_tates:
+    # Filter the data to only show rows with "Tates" in the Session Title
+    # The case=False means it will find "Tates", "TATES", or "tates"
+    tates_data = data[data["Session Title"].str.contains("Tates", case=False)]
+    
+    # Show the filtered data
+    st.write("Here are all your Tates sessions:")
+    st.dataframe(tates_data)
+    
+    # Create two columns for stats
+    col1, col2 = st.columns(2)
+    
+    # Add stats in the first column
+    with col1:
+        st.metric("Number of Sessions", len(tates_data["Session Title"].unique()))
+        st.metric("Total Distance Covered (km)", f"{tates_data['Distance (km)'].sum():.1f}")
+    
+    # Add stats in the second column
+    with col2:
+        st.metric("Highest Speed (m/s)", f"{tates_data['Top Speed (m/s)'].max():.1f}")
+        st.metric("Average Distance per Session (km)", f"{tates_data['Distance (km)'].mean():.1f}")
+    
+    # Create and display a chart
+    st.write("📈 Your Progress in Tates Sessions:")
+    tates_chart = alt.Chart(tates_data).mark_line(point=True).encode(
+        x="Session Title",
+        y="Distance (km)",
+        color="Player Name",
+        tooltip=["Player Name", "Session Title", "Distance (km)", "Top Speed (m/s)"]
+    ).interactive()
+    st.altair_chart(tates_chart, use_container_width=True)
+''')
+
 # Example 6: Your Turn!
 st.header("6️⃣ Your Turn to Explore!")
 coach_message = st.chat_message(name="Coach Gus", avatar="./media/profile_coachGus.JPG")
@@ -120,27 +230,19 @@ with coach_message:
     st.write("3. Look for patterns in your performance")
     st.write("Remember: There's no wrong way to explore data - just have fun with it! 🌟")
 
-# Add code expander for learning
-with st.expander("👀 Want to see how this works? Click here!"):
+# Add starter code for students
+with st.expander("📝 Starter code for your own explorations"):
     st.code('''
-# Here's how we filter for Tates sessions:
-tates_data = data[data["Session Title"].str.contains("Tates", case=False)]
+# Try your own code here!
 
-# Here's how we made the player selector:
-player_name = st.selectbox("Choose a player:", data["Player Name"].unique())
-player_data = data[data["Player Name"] == player_name]
+# For example, to find your highest speed:
+my_name = "Your Name"  # Change this to your name
+my_data = data[data["Player Name"] == my_name]
+fastest_session = my_data.loc[my_data["Top Speed (m/s)"].idxmax()]
+st.write(f"My highest speed was {fastest_session['Top Speed (m/s)']:.2f} m/s in {fastest_session['Session Title']}")
 
-# And here's how we made the interactive chart:
-            
-col1, col2 = st.columns(2)
-with col1:
-    x_axis = st.selectbox("Pick X-axis:", ["Distance (km)", "Top Speed (m/s)", "Sprint Distance (m)"])
-with col2:
-    y_axis = st.selectbox("Pick Y-axis:", ["Sprint Distance (m)", "Distance (km)", "Top Speed (m/s)"])
-chart = alt.Chart(data).mark_circle().encode(
-    x=x_axis,
-    y=y_axis,
-    color="Player Name",
-    tooltip=["Player Name", x_axis, y_axis]
-).interactive()
-    ''')
+# Or to compare distances between players:
+player_distances = data.groupby("Player Name")["Distance (km)"].mean().reset_index()
+player_distances = player_distances.sort_values("Distance (km)", ascending=False)
+st.bar_chart(player_distances.set_index("Player Name"))
+''')
