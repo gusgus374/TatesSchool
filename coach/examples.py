@@ -69,8 +69,43 @@ if st.button("Show Team Records"):
     st.success(f"🏃‍♂️ Fastest Player: {fastest_player['Player Name']} with {fastest_player['Top Speed (m/s)']:.2f} m/s")
     st.success(f"🏃‍♂️ Longest Distance: {longest_distance['Player Name']} with {longest_distance['Distance (km)']:.2f} km")
 
-# Example 5: Your Turn!
-st.header("5️⃣ Your Turn to Explore!")
+# NEW EXAMPLE: Tates Sessions Filter
+st.header("5️⃣ Tates Sessions Only!")
+coach_message = st.chat_message(name="Coach Gus", avatar="./media/profile_coachGus.JPG")
+with coach_message:
+    st.write("Want to see just your Tates School sessions? Let's use some magic to filter the data! 🎩✨")
+
+# Create a toggle for showing Tates sessions
+show_tates = st.toggle("Show Tates Sessions Only")
+
+if show_tates:
+    # Filter for sessions with "Tates" in the title
+    tates_data = data[data["Session Title"].str.contains("Tates", case=False)]
+    st.write("Here are all your Tates sessions:")
+    st.dataframe(tates_data)
+    
+    # Show some fun stats about Tates sessions
+    st.write("📊 Quick Stats from Tates Sessions:")
+    col1, col2 = st.columns(2)
+    with col1:
+        st.metric("Number of Sessions", len(tates_data["Session Title"].unique()))
+        st.metric("Total Distance Covered (km)", f"{tates_data['Distance (km)'].sum():.1f}")
+    with col2:
+        st.metric("Highest Speed (m/s)", f"{tates_data['Top Speed (m/s)'].max():.1f}")
+        st.metric("Average Distance per Session (km)", f"{tates_data['Distance (km)'].mean():.1f}")
+
+    # Show a fun chart of Tates sessions
+    st.write("📈 Your Progress in Tates Sessions:")
+    tates_chart = alt.Chart(tates_data).mark_line(point=True).encode(
+        x="Session Title",
+        y="Distance (km)",
+        color="Player Name",
+        tooltip=["Player Name", "Session Title", "Distance (km)", "Top Speed (m/s)"]
+    ).interactive()
+    st.altair_chart(tates_chart, use_container_width=True)
+
+# Example 6: Your Turn!
+st.header("6️⃣ Your Turn to Explore!")
 coach_message = st.chat_message(name="Coach Gus", avatar="./media/profile_coachGus.JPG")
 with coach_message:
     st.write("Now it's your turn! Try these challenges:")
@@ -82,11 +117,20 @@ with coach_message:
 # Add code expander for learning
 with st.expander("👀 Want to see how this works? Click here!"):
     st.code('''
-# Here's a simple example of how we made the player selector:
+# Here's how we filter for Tates sessions:
+tates_data = data[data["Session Title"].str.contains("Tates", case=False)]
+
+# Here's how we made the player selector:
 player_name = st.selectbox("Choose a player:", data["Player Name"].unique())
 player_data = data[data["Player Name"] == player_name]
 
 # And here's how we made the interactive chart:
+            
+col1, col2 = st.columns(2)
+with col1:
+    x_axis = st.selectbox("Pick X-axis:", ["Distance (km)", "Top Speed (m/s)", "Sprint Distance (m)"])
+with col2:
+    y_axis = st.selectbox("Pick Y-axis:", ["Sprint Distance (m)", "Distance (km)", "Top Speed (m/s)"])
 chart = alt.Chart(data).mark_circle().encode(
     x=x_axis,
     y=y_axis,
