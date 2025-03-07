@@ -74,6 +74,12 @@ st.header("5️⃣ Tates Sessions Only!")
 coach_message = st.chat_message(name="Coach Gus", avatar="./media/profile_coachGus.JPG")
 with coach_message:
     st.write("Want to see just your Tates School sessions? Let's use some magic to filter the data! 🎩✨")
+    st.write("Quick note about `case=False`: This means our search isn't picky about capital or lowercase letters.")
+    st.write("For example, it will find:")
+    st.write("- 'TATES' ✅")
+    st.write("- 'Tates' ✅")
+    st.write("- 'tates' ✅")
+    st.write("Just like when you're searching on Google, it doesn't matter if you use capital letters or not - it finds what you need! 🔍")
 
 # Create a toggle for showing Tates sessions
 show_tates = st.toggle("Show Tates Sessions Only")
