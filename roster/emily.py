@@ -1,20 +1,21 @@
 import streamlit as st
-
-st.title('Me Win')
-if st.button('EMILY DE GREAT turns on the JETS'):
-    st.video('./media/emily_goal.mp4')
+st.title('LALALA')
+if st.button('YES!'):
+    st.video('./media/emily_dribble.mp4')
 if st.button('SOCCER'):
     st.toast(":soccer:")
-
+if st.button("jeufyfud"):
+    st.ballons()
 with st.expander("Show Emily's code"):
     st.code(
         body='''
-import streamlit as st
-st.title('Me Win')
-if st.button('EMILY DE GREAT turns on the JETS'):
-    st.video('./media/emily_goal.mp4')
+st.title('LALALA')
+if st.button('YES!'):
+    st.video('./media/emily_dribble.mp4')
 if st.button('SOCCER'):
     st.toast(":soccer:")
+if st.button("jeufyfud"):
+    st.ballons()
         ''',
         language="python",
         line_numbers=True
