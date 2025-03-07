@@ -75,6 +75,10 @@ classpage = st.Page(
 codeBox = st.Page(
     "./coach/codeBox.py", title="", icon=":material/person_play:",default=(user not in playersdeployed)
 )
+
+examples = st.Page(
+    "./coach/examples.py", title="Examples", icon=":material/person_play:",
+)
 prosoccer = st.Page(
     "./coach/2_US_Pro_Soccer.py",
     title="Pro Soccer Data",
@@ -158,7 +162,7 @@ charlie = st.Page(
 
 account_pages = [logout_page, settings]
 explore_pages = [BootRoom, prosoccer]
-build_pages = [codeBox]
+build_pages = [codeBox, examples]
 deployed_pages = [coachGus, classpage, emily, lana, cooperH, justus, iris, arjun, jack, cruz, lincoln, charlie, chace]
 
 page_dict = {}
