@@ -2,10 +2,10 @@
 import streamlit as st
 
 st.title("What do you want to build today?")
-if st.button('Arjun scores'):
-    st.video("./media/arjun_scores.mp4")
-#if st.button('bread roll'):
-#    st.("./downloads/bread.gif")
+
+if st.button('Arjun Slays'):
+    st.video("./media/arjun_slays.mp4")
+
 with st.expander("Show Arjun's code"):
     st.code(
         body='''
@@ -13,10 +13,10 @@ with st.expander("Show Arjun's code"):
 import streamlit as st
 
 st.title("What do you want to build today?")
-if st.button('Arjun scores'):
-    st.video("./media/arjun_scores.mp4")
-#if st.button('bread roll'):
-#    st.("./downloads/bread.gif")
+
+if st.button('Arjun Slays'):
+    st.video("./media/arjun_slays.mp4")
+
         ''',
         language="python",
         line_numbers=True
