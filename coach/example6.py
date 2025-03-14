@@ -51,12 +51,22 @@ if len(my_data) > 0:
         st.code("""
         # In the Catapult data, Date is stored as an integer offset
         # This code creates a simple readable date for display
-        my_data["ReadableDate"] = my_data["Date"].apply(lambda x: f"Day {x - min(my_data['Date']) + 1}")
+        # Create a list of dates sorted chronologically
+        date_list = sorted(my_data["Date"].unique())
+        # Create a mapping from date to day number
+        date_to_day = {date: idx + 1 for idx, date in enumerate(date_list)}
+        # Apply the mapping to create readable date strings
+        my_data["ReadableDate"] = my_data["Date"].map(lambda x: f"Day {date_to_day[x]}")
         """)
     
     # In the Catapult data, Date is stored as an integer offset
     # Let's create a simple readable date for display
-    my_data["ReadableDate"] = my_data["Date"].apply(lambda x: f"Day {x - min(my_data['Date']) + 1}")
+    # Create a list of dates sorted chronologically
+    date_list = sorted(my_data["Date"].unique())
+    # Create a mapping from date to day number
+    date_to_day = {date: idx + 1 for idx, date in enumerate(date_list)}
+    # Apply the mapping to create readable date strings
+    my_data["ReadableDate"] = my_data["Date"].map(lambda x: f"Day {date_to_day[x]}")
     
     # Sort by date
     with st.expander("👀 See the code that sorts your data by date", expanded=False):
@@ -121,7 +131,9 @@ if len(my_data) > 0:
         
         for day in my_data["Date"]:
             if prev_day is not None:
-                days_between.append(day - prev_day)
+                # Calculate the difference and convert to days as a number
+                delta = day - prev_day
+                days_between.append(delta.total_seconds() / (24 * 60 * 60))  # Convert to days
             prev_day = day
         
         if len(days_between) > 0:
@@ -133,7 +145,9 @@ if len(my_data) > 0:
     
     for day in my_data["Date"]:
         if prev_day is not None:
-            days_between.append(day - prev_day)
+            # Calculate the difference and convert to days as a number
+            delta = day - prev_day
+            days_between.append(delta.total_seconds() / (24 * 60 * 60))  # Convert to days
         prev_day = day
     
     if len(days_between) > 0:

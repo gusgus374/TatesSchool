@@ -141,18 +141,18 @@ if len(my_data) > 0:
     with st.expander("👀 See the code that gets power play durations", expanded=False):
         st.code("""
         # This gets the count of power plays in different duration zones
-        pp_zone1 = session_data["Power Play Duration Zones: 0 - 2.5 s (Power Plays)"]
-        pp_zone2 = session_data["Power Play Duration Zones: 2.5 - 5 s (Power Plays)"]
-        pp_zone3 = session_data["Power Play Duration Zones: 5 - 7.5 s (Power Plays)"]
-        pp_zone4 = session_data["Power Play Duration Zones: 7.5 - 10 s (Power Plays)"]
-        pp_zone5 = session_data["Power Play Duration Zones: > 10 s (Power Plays)"]
+        pp_zone1 = session_data["Power Play Duration Zones: 0 - 2.5 s (Power Plays)"] if "Power Play Duration Zones: 0 - 2.5 s (Power Plays)" in session_data else 0
+        pp_zone2 = session_data["Power Play Duration Zones: 2.5 - 5 s (Power Plays)"] if "Power Play Duration Zones: 2.5 - 5 s (Power Plays)" in session_data else 0
+        pp_zone3 = session_data["Power Play Duration Zones: 5 - 7.5 s (Power Plays)"] if "Power Play Duration Zones: 5 - 7.5 s (Power Plays)" in session_data else 0
+        pp_zone4 = session_data["Power Play Duration Zones: 7.5 - 10 s (Power Plays)"] if "Power Play Duration Zones: 7.5 - 10 s (Power Plays)" in session_data else 0
+        pp_zone5 = session_data["Power Play Duration Zones: > 10 s (Power Plays)"] if "Power Play Duration Zones: > 10 s (Power Plays)" in session_data else 0
         """)
     
-    pp_zone1 = session_data["Power Play Duration Zones: 0 - 2.5 s (Power Plays)"]
-    pp_zone2 = session_data["Power Play Duration Zones: 2.5 - 5 s (Power Plays)"]
-    pp_zone3 = session_data["Power Play Duration Zones: 5 - 7.5 s (Power Plays)"]
-    pp_zone4 = session_data["Power Play Duration Zones: 7.5 - 10 s (Power Plays)"]
-    pp_zone5 = session_data["Power Play Duration Zones: > 10 s (Power Plays)"]
+    pp_zone1 = session_data["Power Play Duration Zones: 0 - 2.5 s (Power Plays)"] if "Power Play Duration Zones: 0 - 2.5 s (Power Plays)" in session_data else 0
+    pp_zone2 = session_data["Power Play Duration Zones: 2.5 - 5 s (Power Plays)"] if "Power Play Duration Zones: 2.5 - 5 s (Power Plays)" in session_data else 0
+    pp_zone3 = session_data["Power Play Duration Zones: 5 - 7.5 s (Power Plays)"] if "Power Play Duration Zones: 5 - 7.5 s (Power Plays)" in session_data else 0
+    pp_zone4 = session_data["Power Play Duration Zones: 7.5 - 10 s (Power Plays)"] if "Power Play Duration Zones: 7.5 - 10 s (Power Plays)" in session_data else 0
+    pp_zone5 = session_data["Power Play Duration Zones: > 10 s (Power Plays)"] if "Power Play Duration Zones: > 10 s (Power Plays)" in session_data else 0
     
     # Create labels for the zones
     with st.expander("👀 See the code that sets up the pie chart", expanded=False):

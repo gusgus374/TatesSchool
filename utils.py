@@ -65,7 +65,19 @@ def load_catapult_data(file_path):
         'Time in Speed Zone 1 (secs)', 'Time in Speed Zone 2 (secs)', 
         'Time in Speed Zone 3 (secs)', 'Time in Speed Zone 4 (secs)', 
         'Time in Speed Zone 5 (secs)',
-        'Impacts', 'Energy (kcal)'
+        'Impacts', 'Energy (kcal)',
+        # Power Play duration zones
+        'Power Play Duration Zones: 0 - 2.5 s (Power Plays)',
+        'Power Play Duration Zones: 2.5 - 5 s (Power Plays)',
+        'Power Play Duration Zones: 5 - 7.5 s (Power Plays)',
+        'Power Play Duration Zones: 7.5 - 10 s (Power Plays)',
+        'Power Play Duration Zones: > 10 s (Power Plays)',
+        # Acceleration zones
+        'Distance in Acceleration Zones: 0 - 1 m/s/s  (km)',
+        'Distance in Acceleration Zones: 1 - 2 m/s/s  (km)',
+        'Distance in Acceleration Zones: 2 - 3 m/s/s  (km)', 
+        'Distance in Acceleration Zones: 3 - 4 m/s/s  (km)',
+        'Distance in Acceleration Zones: > 4 m/s/s  (km)'
     ]
     
     # Filter to only keep necessary columns if they exist in the DataFrame

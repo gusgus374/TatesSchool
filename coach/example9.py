@@ -233,11 +233,11 @@ if len(my_data) > 0:
     with st.expander("👀 See the code that gets acceleration zone data", expanded=False):
         st.code("""
         # This gets data about how much distance you covered at different acceleration rates
-        accel_zone1 = session_data["Distance in Acceleration Zones: 0 - 1 m/s/s  (km)"]
-        accel_zone2 = session_data["Distance in Acceleration Zones: 1 - 2 m/s/s  (km)"]
-        accel_zone3 = session_data["Distance in Acceleration Zones: 2 - 3 m/s/s  (km)"]
-        accel_zone4 = session_data["Distance in Acceleration Zones: 3 - 4 m/s/s  (km)"]
-        accel_zone5 = session_data["Distance in Acceleration Zones: > 4 m/s/s  (km)"]
+        accel_zone1 = session_data["Distance in Acceleration Zones: 0 - 1 m/s/s  (km)"] if "Distance in Acceleration Zones: 0 - 1 m/s/s  (km)" in session_data else 0
+        accel_zone2 = session_data["Distance in Acceleration Zones: 1 - 2 m/s/s  (km)"] if "Distance in Acceleration Zones: 1 - 2 m/s/s  (km)" in session_data else 0
+        accel_zone3 = session_data["Distance in Acceleration Zones: 2 - 3 m/s/s  (km)"] if "Distance in Acceleration Zones: 2 - 3 m/s/s  (km)" in session_data else 0
+        accel_zone4 = session_data["Distance in Acceleration Zones: 3 - 4 m/s/s  (km)"] if "Distance in Acceleration Zones: 3 - 4 m/s/s  (km)" in session_data else 0
+        accel_zone5 = session_data["Distance in Acceleration Zones: > 4 m/s/s  (km)"] if "Distance in Acceleration Zones: > 4 m/s/s  (km)" in session_data else 0
         
         # Convert to meters for easier understanding
         accel_zones = ["0-1 m/s²", "1-2 m/s²", "2-3 m/s²", "3-4 m/s²", ">4 m/s²"]
@@ -250,11 +250,11 @@ if len(my_data) > 0:
         ]
         """)
     
-    accel_zone1 = session_data["Distance in Acceleration Zones: 0 - 1 m/s/s  (km)"]
-    accel_zone2 = session_data["Distance in Acceleration Zones: 1 - 2 m/s/s  (km)"]
-    accel_zone3 = session_data["Distance in Acceleration Zones: 2 - 3 m/s/s  (km)"]
-    accel_zone4 = session_data["Distance in Acceleration Zones: 3 - 4 m/s/s  (km)"]
-    accel_zone5 = session_data["Distance in Acceleration Zones: > 4 m/s/s  (km)"]
+    accel_zone1 = session_data["Distance in Acceleration Zones: 0 - 1 m/s/s  (km)"] if "Distance in Acceleration Zones: 0 - 1 m/s/s  (km)" in session_data else 0
+    accel_zone2 = session_data["Distance in Acceleration Zones: 1 - 2 m/s/s  (km)"] if "Distance in Acceleration Zones: 1 - 2 m/s/s  (km)" in session_data else 0
+    accel_zone3 = session_data["Distance in Acceleration Zones: 2 - 3 m/s/s  (km)"] if "Distance in Acceleration Zones: 2 - 3 m/s/s  (km)" in session_data else 0
+    accel_zone4 = session_data["Distance in Acceleration Zones: 3 - 4 m/s/s  (km)"] if "Distance in Acceleration Zones: 3 - 4 m/s/s  (km)" in session_data else 0
+    accel_zone5 = session_data["Distance in Acceleration Zones: > 4 m/s/s  (km)"] if "Distance in Acceleration Zones: > 4 m/s/s  (km)" in session_data else 0
     
     # Convert to meters for easier understanding
     accel_zones = ["0-1 m/s²", "1-2 m/s²", "2-3 m/s²", "3-4 m/s²", ">4 m/s²"]
